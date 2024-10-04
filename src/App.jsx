@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Layout from "./features/Layout";
+import PartyForm from "./features/pages/PartyForm";
+import PartyList from "./features/pages/PartyList";
+import PartyDisplay from "./features/pages/PartyDisplay";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const tree = createBrowserRouter([
+	{
+		path: `/`,
+		element: <Layout />,
+		children: [
+			{ path: `/form`, element: <PartyForm /> },
+			{ path: `/list`, element: <PartyList /> },
+			{ path: `/viewer`, element: <PartyDisplay /> },
+		],
+	},
+]);
+
+export default function App() {
+	return <RouterProvider router={tree} />;
 }
-
-export default App
