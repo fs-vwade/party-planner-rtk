@@ -1,0 +1,32 @@
+:root {
+	--phi: calc(sqrt(5) * 0.5 - 0.5);
+	--phi-aspect: sqrt(var(--phi));
+	--body-padding: calc(1rem * pow(var(--phi), 1));
+	--header-link-padding: calc(1rem * pow(var(--phi), 1))
+		calc(1rem * pow(var(--phi), -1));
+}
+
+html {
+	box-sizing: border-box;
+	scrollbar-width: none;
+}
+
+body {
+	margin: 0;
+}
+
+header,
+main {
+	margin: var(--body-padding);
+}
+header nav {
+	display: flex;
+}
+header nav a {
+	padding: var(--header-link-padding);
+}
+
+main {
+	padding: var(--body-padding);
+	border: 0.1rem solid;
+}
