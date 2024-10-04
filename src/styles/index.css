@@ -7,12 +7,15 @@
 }
 
 html {
-	box-sizing: border-box;
 	scrollbar-width: none;
 }
 
 body {
+	display: flex;
+	flex-direction: column;
 	margin: 0;
+	box-sizing: border-box;
+	height: 100vh;
 }
 
 header,
@@ -21,12 +24,20 @@ main {
 }
 header nav {
 	display: flex;
+	flex-wrap: wrap;
 }
 header nav a {
+	margin: calc(1rem * pow(var(--phi), 2)) calc(1rem * pow(var(--phi), 2));
+	flex: 1 0 auto;
 	padding: var(--header-link-padding);
+	border: 0.1rem solid;
+	border-radius: 1rem;
+	text-align: center;
 }
 
 main {
+	flex: 1;
 	padding: var(--body-padding);
+	padding: var(--header-link-padding);
 	border: 0.1rem solid;
 }

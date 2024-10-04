@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "./features/Layout";
+import Home from "./features/pages/Home";
 import PartyForm from "./features/pages/PartyForm";
 import PartyList from "./features/pages/PartyList";
 import PartyDisplay from "./features/pages/PartyDisplay";
@@ -10,6 +11,7 @@ const tree = createBrowserRouter([
 		path: `/`,
 		element: <Layout />,
 		children: [
+			{ path: `/`, element: <Home /> },
 			{ path: `/form`, element: <PartyForm /> },
 			{ path: `/list`, element: <PartyList /> },
 			{ path: `/viewer`, element: <PartyDisplay /> },
