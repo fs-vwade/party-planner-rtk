@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useGetPartyQuery, useDeletePartyMutation } from "./partySlice";
 
 import "./PartyDisplay.css";
@@ -8,8 +9,13 @@ export default function PartyDisplay({ partyId }) {
 		isLoading,
 		error,
 	} = useGetPartyQuery(partyId, { skip: !partyId });
-
 	const [deleteParty] = useDeletePartyMutation();
+	const nav = useNavigate();
+
+	const removeParty = () => {
+		deleteParty(partyId);
+		nav(`/list`);
+	};
 
 	function partyRender() {
 		return (
@@ -30,7 +36,7 @@ export default function PartyDisplay({ partyId }) {
 						<div>
 							Description: <div>{party.description}</div>
 						</div>
-						<div className="view-button" onClick={() => deleteParty(partyId)}>
+						<div className="view-button" onClick={removeParty}>
 							Delete this entry
 						</div>
 					</div>
