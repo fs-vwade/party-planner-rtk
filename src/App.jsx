@@ -10,6 +10,8 @@ import PartyDisplay from "./features/pages/PartyDisplay";
 export default function App() {
 	const [selectedPartyId, setSelectedPartyId] = useState(null);
 
+	const resetPartyId = () => setSelectedPartyId(null);
+
 	const tree = createBrowserRouter([
 		{
 			path: `/`,
@@ -26,7 +28,9 @@ export default function App() {
 				},
 				{
 					path: `/viewer`,
-					element: <PartyDisplay partyId={selectedPartyId} />,
+					element: (
+						<PartyDisplay partyId={selectedPartyId} resetId={resetPartyId} />
+					),
 				},
 			],
 		},
