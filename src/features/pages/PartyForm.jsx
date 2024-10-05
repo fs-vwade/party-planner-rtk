@@ -4,10 +4,10 @@ import { useAddPartyMutation } from "./partySlice";
 import "./PartyForm.css";
 
 export default function PartyForm() {
-	const [name, setName] = useState("");
-	const [location, setLocation] = useState("");
+	const [name, setName] = useState("interim adeptus meritus");
 	const [date, setDate] = useState("");
-	const [description, setDescription] = useState("");
+	const [location, setLocation] = useState("conch & shell");
+	const [description, setDescription] = useState("enigmatic prism");
 
 	const [addParty, { isLoading, error }] = useAddPartyMutation();
 
@@ -21,16 +21,13 @@ export default function PartyForm() {
 	const partySubmit = async (event) => {
 		event.preventDefault();
 
-		try {
-			addParty({
-				name: name,
-				date: date,
-				location: location,
-				description: description,
-			});
-		} catch (error) {
-			console.error(error);
-		}
+		const new_party = {
+			name: name,
+			description: description,
+			date: new Date(Date.parse(date)).toISOString(),
+			location: location,
+		};
+		addParty(new_party);
 
 		return;
 	};
@@ -62,7 +59,7 @@ export default function PartyForm() {
 					<input
 						type="date"
 						value={date}
-						onChange={(e) => updateField(e, setDate)}
+						onChange={(e) => setDate(e.target.value)}
 					/>
 				</label>
 				<label className="description">
