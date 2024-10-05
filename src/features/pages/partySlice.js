@@ -1,11 +1,11 @@
-import api from "../store/api";
+import api from "../../store/api";
 
 const partyApi = api.injectEndpoints({
 	endpoints: (build) => ({
 		getParties: build.query({
 			query: () => `events`,
 			providesTags: [`Party`],
-			//transformResponse: (response) => response.data,
+			transformResponse: (response) => response.data,
 		}),
 		getParty: build.query({
 			query: (id) => `events/${id}`,

@@ -1,0 +1,21 @@
+form.party {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+form.party label {
+	display: flex;
+	flex: 1 1 100%;
+	padding: calc(1rem * pow(var(--phi), 2)) 0;
+}
+
+label.description {
+	flex: 1 0 100%;
+	flex-direction: column;
+	width: 100%;
+}
+
+form.party label input,
+form.party label textarea {
+	flex: 1 1 auto;
+}

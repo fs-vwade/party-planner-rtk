@@ -1,7 +1,7 @@
 export default function PartyDisplay() {
 	return (
 		<>
-			<div>Party Display</div>
+			<h1>Party Display</h1>
 		</>
 	);
 }
