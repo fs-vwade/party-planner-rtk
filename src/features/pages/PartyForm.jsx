@@ -5,7 +5,7 @@ import "./PartyForm.css";
 
 export default function PartyForm() {
 	const [name, setName] = useState("interim adeptus meritus");
-	const [date, setDate] = useState("");
+	const [date, setDate] = useState(new Date().toISOString().split(`T`)[0]);
 	const [location, setLocation] = useState("conch & shell");
 	const [description, setDescription] = useState("enigmatic prism");
 
@@ -27,10 +27,19 @@ export default function PartyForm() {
 			date: new Date(Date.parse(date)).toISOString(),
 			location: location,
 		};
-		addParty(new_party);
-
-		return;
+		try {
+			await addParty(new_party).unwrap();
+			resetFields();
+		} catch (error) {
+			console.error(error);
+		}
 	};
+
+	function allClear() {
+		if (!isLoading && !error) {
+			resetFields;
+		}
+	}
 
 	const updateField = (e, f) => f(e.target.value);
 
@@ -73,6 +82,7 @@ export default function PartyForm() {
 				<button>Submit</button>
 				{isLoading && <output>{"Sending party info..."}</output>}
 				{error && <output>{error.message}</output>}
+				{allClear()}
 			</form>
 		</>
 	);
