@@ -18,11 +18,11 @@ export default function App() {
 				{ path: `/`, element: <Home /> },
 				{
 					path: `/form`,
-					element: <PartyForm setPartyId={setSelectedPartyId} />,
+					element: <PartyForm />,
 				},
 				{
 					path: `/list`,
-					element: <PartyList />,
+					element: <PartyList setPartyId={setSelectedPartyId} />,
 				},
 				{
 					path: `/viewer`,
