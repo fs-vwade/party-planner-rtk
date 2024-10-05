@@ -3,7 +3,7 @@ import { useGetPartyQuery, useDeletePartyMutation } from "./partySlice";
 
 import "./PartyDisplay.css";
 
-export default function PartyDisplay({ partyId }) {
+export default function PartyDisplay({ partyId, resetId }) {
 	const {
 		data: party,
 		isLoading,
@@ -15,16 +15,17 @@ export default function PartyDisplay({ partyId }) {
 	const removeParty = () => {
 		deleteParty(partyId);
 		nav(`/list`);
+		resetId();
 	};
-
-	function partyRender() {
-		return (
+	return (
+		<>
+			<h1>Party Display</h1>
 			<output>
 				{error ? (
 					error.message
 				) : isLoading ? (
 					"Getting party details..."
-				) : (
+				) : partyId ? (
 					<div className="view">
 						<h2>
 							<div>{party.name}</div>
@@ -40,14 +41,10 @@ export default function PartyDisplay({ partyId }) {
 							Delete this entry
 						</div>
 					</div>
+				) : (
+					<></>
 				)}
 			</output>
-		);
-	}
-	return (
-		<>
-			<h1>Party Display</h1>
-			{partyRender()}
 		</>
 	);
 }
