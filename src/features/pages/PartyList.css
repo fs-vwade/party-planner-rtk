@@ -1,0 +1,28 @@
+.list {
+	--btn-opacity: 0%;
+	--btn-height: 0rem;
+	--btn-overflow: hidden;
+	--btn-line-height: 0rem;
+}
+.list:hover {
+	--btn-opacity: 100%;
+	--btn-height: 1;
+	--btn-overflow: visible;
+	--btn-line-height: 1rem;
+}
+
+.list-button {
+	opacity: calc(var(--btn-opacity));
+	width: 100%;
+	margin: calc(1rem * var(--btn-height) * pow(var(--phi), 1)) 0;
+	padding: calc(2rem * var(--btn-height) * pow(var(--phi), 1));
+	border: 0.1rem solid;
+	border-style: dashed;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: var(--btn-line-height);
+	/*max-height: calc();*/
+	overflow: var(--btn-overflow);
+	transition-duration: 1s;
+	transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
