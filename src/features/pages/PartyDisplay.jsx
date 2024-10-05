@@ -1,5 +1,7 @@
 import { useGetPartyQuery, useDeletePartyMutation } from "./partySlice";
 
+import "./PartyDisplay.css";
+
 export default function PartyDisplay({ partyId }) {
 	const {
 		data: party,
@@ -17,7 +19,7 @@ export default function PartyDisplay({ partyId }) {
 				) : isLoading ? (
 					"Getting party details..."
 				) : (
-					<div>
+					<div className="view">
 						<h2>
 							<div>{party.name}</div>
 						</h2>
@@ -27,6 +29,9 @@ export default function PartyDisplay({ partyId }) {
 						<div>Location: {party.location}</div>
 						<div>
 							Description: <div>{party.description}</div>
+						</div>
+						<div className="view-button" onClick={() => deleteParty(partyId)}>
+							Delete this entry
 						</div>
 					</div>
 				)}
